@@ -47,15 +47,4 @@ class Handler extends ExceptionHandler
             //
         });
     }
-
-    public function render($request, Throwable $e)
-    {
-        if ($e instanceof \Illuminate\Auth\AuthenticationException) {
-            return response()->json([
-                'error' => 'Unauthorized',
-                'message' => 'You are not authorized to access this resource.'
-            ], 401);
-        }
-        return parent::render($request, $e);
-    }
 }

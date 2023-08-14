@@ -1,66 +1,85 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Test Intermediate
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Didalam project ini terdapat Backend menggunakan Framework 
+Laravel, dan Frontend menggunakan Framework VueJS alias Laravel x VueJS
 
-## About Laravel
+Di dalamnya terdapat fitur API 
+1. Login
+2. Register
+3. getData Kabupaten
+4. getData list kunjungan
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Table of Contents
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Project Overview](#project-overview)
+- [Installation](#installation)
+- [Usage](#usage)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Project Overview
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Provide a brief overview of your project. Explain what it does and why it is useful or interesting.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Provide step-by-step instructions on how to install and set up your project. Include any dependencies that need to be installed and any additional configuration that needs to be done.
 
-## Laravel Sponsors
+1. Clone repositori ini ke mesin lokal:
+ ```bash
+   git clone https://github.com/sulistyop/intermediate-laravel.git
+```
+2. Masuk ke direktori project
+ ```bash
+   cd intermediate-laravel
+```
+3. Instal semua dependensi menggunakan Composer dan NPM:
+```bash
+  composer install
+  npm install
+```
+4. Salin berkas .env.example menjadi .env dan sesuaikan pengaturan database dan konfigurasi lain yang dibutuhkan:
+    
+```bash
+  cp .env.example .env
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+5. Generate key aplikasi:
+```bash
+  php artisan key:generate
+```
+6. Buatlah 2 database sesuai nama dibawah ini:
 
-### Premium Partners
+    1. Database bernama `farmagitech` atau database punya anda , database ini adalah database utama dari aplikasi
+    2. Database dgn nama `testing_fg`, database ini untuk menjalankan unit testing dari fitur yang sudah dibuat
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
 
-## Contributing
+7. Migrasikan basis data beserta seeder yang sudah disediakan:
+```bash
+  php artisan migrate:fresh --seed
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+## Usage
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Jalankan server Backend menggunakan perintah :
 
-## Security Vulnerabilities
+```bash
+  php artisan serve
+```
+Untuk menjalankan Frontend jalankan perintah :
+```bash
+  npm run dev
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+untuk Dokumentasi api diakses di "{server lokal anda}/api/docs":
+```bash
+  http://127.0.0.1:8000/api-docs
+```
 
-## License
+untuk Aplikasi nya diakses di:
+```bash
+  http://127.0.0.1:8000
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+Authentikasi menggunakan Bearer (Access Token) Keterangan ada di API DOCS

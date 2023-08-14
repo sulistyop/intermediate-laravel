@@ -27,7 +27,7 @@ class UserAPIControllerTest extends TestCase
     public function testLoginEmailNotExist()
     {
         $response = $this->json('POST', '/api/login', [
-            'email' => '',
+            'email' => null,
             'password' => 'wrongpassword',
         ]);
 
@@ -43,7 +43,7 @@ class UserAPIControllerTest extends TestCase
         ]);
 
         $response->assertStatus(404)
-            ->assertSeeText('Email atau Password anda salah');
+            ->assertSeeText('Email atau password anda salah !');
     }
 
     public function testRegister()

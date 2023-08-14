@@ -16,6 +16,14 @@ class UserAPIController extends BaseController
      */
     public function login(Request $request): JsonResponse
     {
+        $validator = Validator::make($request->all(),[
+            'email'=>'required|email',
+            'password'=>'required'
+        ]);
+
+        if($validator->fails()){
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $user = Auth::user();
             $success['token'] =  $user->createToken('MyApp')->plainTextToken;
@@ -24,7 +32,7 @@ class UserAPIController extends BaseController
             return $this->sendResponse($success, 'User login successfully.');
         }
         else{
-            return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
+            return $this->sendError('Unauthorised.', ['error'=>'Email atau password anda salah !']);
         }
     }
 

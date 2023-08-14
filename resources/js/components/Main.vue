@@ -107,7 +107,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Keluar</button>
-                                    <button type="button" class="btn btn-sm btn-primary" @click="searchFilter">Cari</button>
+                                    <button type="button" class="btn btn-sm btn-primary" @click="searchFilter" :disabled="isFormEmpty">Cari</button>
                                 </div>
                             </form>
                         </div>
@@ -170,6 +170,16 @@ export default {
             selectedOption: 'daily',
         };
     },
+    computed: {
+        isFormEmpty() {
+            return (
+                this.tanggal_awal === '' ||
+                this.tanggal_akhir === '' ||
+                this.kabupaten === '' ||
+                this.selectedOption === ''
+            );
+        }
+    },
     methods: {
 
         setProduct(data) {
@@ -193,7 +203,7 @@ export default {
                     "tanggal_awal=" + this.tanggal_awal +
                     "&tanggal_akhir=" + this.tanggal_akhir +
                     "&kabupaten=" + this.kabupaten +
-                    "&kategori=" + this.selectedOption
+                    "&tipe=" + this.selectedOption
                 )
                 .then((response) => this.setProduct(response.data))
                 .then(() => {

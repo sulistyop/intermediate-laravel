@@ -10,7 +10,7 @@ class VisitServiceImpl implements VisitService
 {
     public function getData($request): array
     {
-        $kategori = $request->input('kategori') ?? [];
+        $tipe = $request->input('tipe') ?? [];
         $tanggal_awal = $request->input('tanggal_awal') ?? [];
         $tanggal_akhir = $request->input('tanggal_akhir') ?? [];
         $kabupaten = $request->input('kabupaten') ?? [];
@@ -35,9 +35,9 @@ class VisitServiceImpl implements VisitService
         }
 
         if(!empty($tanggal_awal) && !empty($tanggal_akhir)) {
-            if($kategori == 'daily'){
+            if($tipe == 'daily'){
                 $query->whereBetween('pendaftaran.waktu_daftar', [$tanggal_awal, $tanggal_akhir]);
-            }elseif($kategori == 'yearly'){
+            }elseif($tipe == 'yearly'){
                 $query->whereBetween('pendaftaran.waktu_daftar', [
                     $tanggal_awal.'-01-01',
                     $tanggal_akhir.'-12-31'

@@ -7,7 +7,17 @@ import 'bootstrap';
  */
 
 import axios from 'axios';
+import Cokies from 'js-cookie'
 window.axios = axios;
+const instance = axios.create({
+    baseURL: 'http://localhost:8000',
+});
+
+// Mengambil CSRF token dari cookie atau sumber lainnya
+const csrfToken = Cokies.get('XSRF-TOKEN');
+
+// Menambahkan CSRF token ke header setiap permintaan
+instance.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
