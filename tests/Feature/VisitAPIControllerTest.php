@@ -2,26 +2,29 @@
 
 namespace Tests\Feature;
 
-use App\Services\VisitService;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Models\User;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class VisitAPIControllerTest extends TestCase
 {
-    private VisitService $visitService;
-    private $baseUrl;
-    protected function setUp(): void
+    public function testGetData()
     {
-       parent::setUp();
-       $this->visitService = $this->app->make(VisitService::class);
-       $this->baseUrl = env('APP_URL','http://localhost:8000').'/api/';
+        // Buat user baru
+        $user = User::factory()->create();
+        Sanctum::actingAs($user);//registrasikan dgn sanctum
+
+        // ambil token user
+        $token = $user->createToken('test-token')->plainTextToken;
+
+        $this->withHeaders([
+            'Authorization' => 'Beater '. $token
+        ])
+            ->json('GET','/api/pendaftaran/get')
+            ->assertStatus(200)
+            ->assertSeeText('success')
+            ->assertStatus('true')
+            ->assertStatus('data');
     }
-
-//    public function testGetVisit()
-//    {
-//        $this->withBasicAuth()
-//    }
-
 
 }
