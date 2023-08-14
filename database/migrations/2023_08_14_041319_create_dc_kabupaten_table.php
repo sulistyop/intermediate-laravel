@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('dc_kabupaten', function (Blueprint $table) {
             $table->id();
+            $table->text('nama')->index()->nullable();
             $table->timestamps();
         });
     }

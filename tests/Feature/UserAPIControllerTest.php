@@ -60,7 +60,6 @@ class UserAPIControllerTest extends TestCase
 
     public function testValidateRegister()
     {
-        $this->markTestSkipped();
         //test register tanpa name
         $this->json('POST','/api/register')
             ->assertStatus(404)
