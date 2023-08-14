@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('dc_pasien', function (Blueprint $table) {
             $table->id();
+            $table->string('nama',50)->index()->nullable();
+            $table->integer('id_kelurahan')->index()->nullable();
             $table->timestamps();
         });
     }

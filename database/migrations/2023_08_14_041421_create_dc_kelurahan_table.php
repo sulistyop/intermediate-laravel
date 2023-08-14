@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('dc_kelurahan', function (Blueprint $table) {
             $table->id();
+            $table->string('nama',50)->index()->nullable();
+            $table->integer('id_kecamatan')->index()->nullable();
+            $table->string('kode',10)->index()->nullable();
             $table->timestamps();
         });
     }

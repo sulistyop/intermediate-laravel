@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('dc_provinsi', function (Blueprint $table) {
             $table->id();
+            $table->string('nama',50)->index()->nullable();
+            $table->string('kode',10)->index()->nullable();
             $table->timestamps();
         });
     }
