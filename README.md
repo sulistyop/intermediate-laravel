@@ -81,5 +81,11 @@ untuk Aplikasi nya diakses di:
   http://127.0.0.1:8000
 ```
 
+Login yang sudah ada dalam seeder 
+```bash
+  admin@test.com
+  password
+```
+
 
 Authentikasi menggunakan Bearer (Access Token) Keterangan ada di API DOCS
