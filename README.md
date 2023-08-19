@@ -18,7 +18,7 @@ Di dalamnya terdapat fitur API
 
 ## Project Overview
 
-Provide a brief overview of your project. Explain what it does and why it is useful or interesting.
+Didalam project ini menggunakan Laravel 9, Vuejs 3, dan Php Versi 8 
 
 ## Installation
 
